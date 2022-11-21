@@ -27,7 +27,7 @@ const Task = ({ done, id, name, min, sec, deleteTask, onTaskClick }) => {
       <input type="text" className="edit" />
     </li>
   );
-};
+}
 Task.defaultProps = {
   deleteTask: () => {},
   onTaskClick: () => {},
