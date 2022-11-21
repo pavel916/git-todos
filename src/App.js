@@ -1,54 +1,52 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import "./App.css";
+import './App.css'
 
-import NewTaskForm from "./components/NewTaskForm";
+import NewTaskForm from './components/NewTaskForm'
 
-import Footer from "./components/Footer";
+import Footer from './components/Footer'
 
-import TaskList from "./components/TaskList";
+import TaskList from './components/TaskList'
 
 export default class App extends Component {
-
   state = {
-    
     todoData: [
       {
         id: 1,
-        name: "Completed task",
+        name: 'Completed task',
         done: true,
-        status: "completed",
+        status: 'completed',
         min: 10,
         sec: 10,
       },
       {
         id: 2,
-        name: "Editing task",
+        name: 'Editing task',
         done: true,
-        status: "editing",
+        status: 'editing',
         min: 11,
         sec: 0,
       },
       {
         id: 3,
-        name: "Active task",
+        name: 'Active task',
         done: true,
-        status: "",
+        status: '',
         min: 5,
         sec: 0,
       },
     ],
-    filterTasks: "All",
-  };
+    filterTasks: 'All',
+  }
 
   createTask = (text, min, sec) => ({
     id: Date.now(),
     name: text,
     done: true,
-    status: "",
+    status: '',
     min,
     sec,
-  });
+  })
 
   onTaskClick = (id) => {
     this.setState(({ todoData }) => ({
@@ -57,61 +55,59 @@ export default class App extends Component {
           return {
             ...task,
             done: !task.done,
-          };
+          }
         }
-        return task;
+        return task
       }),
-    }));
-  };
+    }))
+  }
 
   deleteTask = (id) => {
     this.setState(({ todoData }) => ({
       todoData: todoData.filter((i) => i.id !== id),
-    }));
-  };
+    }))
+  }
 
   addTask = (text, min, sec) => {
     this.setState(({ todoData }) => {
-      text = text.trim();
-      if (text === "") return;
-      if (min === "") min = 10;
-      if (sec === "") sec = 0;
-      const item = this.createTask(text, min, sec);
+      text = text.trim()
+      if (text === '') return
+      if (min === '') min = 10
+      if (sec === '') sec = 0
+      const item = this.createTask(text, min, sec)
       return {
         todoData: [...todoData, item],
-      };
-    });
-  };
+      }
+    })
+  }
 
   clearCompletedTasks = () => {
     this.setState(({ todoData }) => ({
       todoData: todoData.filter((i) => i.done === true),
-    }));
-  };
+    }))
+  }
 
   setFilter = (name) => {
-    this.setState(() => ({ filterTasks: name }));
-  };
+    this.setState(() => ({ filterTasks: name }))
+  }
 
   render() {
     const filterMap = {
       All: () => true,
       Active: (task) => task.done,
       Completed: (task) => !task.done,
-    };
+    }
 
-    const filterNames = Object.keys(filterMap);
+    const filterNames = Object.keys(filterMap)
 
-    const countItems = this.state.todoData.filter(
-      (i) => i.done === false
-    ).length;
+    const countItems = this.state.todoData.filter((i) => i.done === false).length
     return (
-      <section className="todoapp">
-        <header className="header">
+      <section className='todoapp'>
+        <header className='header'>
           <h1>todos</h1>
           <NewTaskForm addTask={this.addTask} />
         </header>
-        <section className="main">
+        <section className='main'>
           <TaskList
             addTask={this.addTask}
             deleteTask={this.deleteTask}
@@ -129,6 +125,6 @@ export default class App extends Component {
           />
         </section>
       </section>
-    );
+    )
   }
 }
