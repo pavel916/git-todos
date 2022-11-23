@@ -67,7 +67,7 @@ export default class NewTaskForm extends Component {
           maxLength='2'
           minLength='1'
         />
-        <input type='submit' value='ok' onSubmit={this.onLabelSubmit} />
+        <input className='inputSubmit' type='submit' value='ok' onSubmit={this.onLabelSubmit} />
       </form>
     )
   }

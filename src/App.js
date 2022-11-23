@@ -3,9 +3,7 @@ import React, { Component } from 'react'
 import './App.css'
 
 import NewTaskForm from './components/NewTaskForm'
-
 import Footer from './components/Footer'
-
 import TaskList from './components/TaskList'
 
 export default class App extends Component {
