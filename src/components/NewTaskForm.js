@@ -3,18 +3,13 @@ import PropTypes from 'prop-types'
 
 export default class NewTaskForm extends Component {
   state = {
-    label: '',
-    labelMin: '',
-    labelSec: '',
+    label: ''
+    
   }
 
-  static propTypes = {
-    addTask: PropTypes.func,
-  }
+ 
 
-  static defaultProps = {
-    addTask: () => {},
-  }
+  
 
   onLabelChangeTitle = (e) => {
     this.setState({
@@ -22,24 +17,12 @@ export default class NewTaskForm extends Component {
     })
   }
 
-  onLabelChangeMin = (e) => {
-    e.target.value = e.target.value.replace(/[^\d.]/g, '')
-    this.setState({
-      labelMin: e.target.value,
-    })
-  }
-
-  onLabelChangeSec = (e) => {
-    e.target.value = e.target.value.replace(/[^\d.]/g, '')
-    this.setState({
-      labelSec: e.target.value,
-    })
-  }
+  
 
   onLabelSubmit = (e) => {
     e.preventDefault()
-    this.props.addTask(this.state.label, this.state.labelMin, this.state.labelSec)
-    this.setState({ label: '', labelMin: '', labelSec: '' })
+    this.props.addTask(this.state.label)
+    this.setState({ label: '' })
   }
 
   render() {
@@ -51,24 +34,15 @@ export default class NewTaskForm extends Component {
           placeholder='What needs to be done?'
           value={this.state.label}
         />
-        <input
-          onChange={this.onLabelChangeMin}
-          className='new-todo-form__timer'
-          placeholder='Min'
-          value={this.state.labelMin}
-          maxLength='3'
-          minLength='1'
-        />
-        <input
-          onChange={this.onLabelChangeSec}
-          className='new-todo-form__timer'
-          placeholder='Sec'
-          value={this.state.labelSec}
-          maxLength='2'
-          minLength='1'
-        />
+       
         <input className='inputSubmit' type='submit' value='ok' onSubmit={this.onLabelSubmit} />
       </form>
     )
   }
+}
+NewTaskForm.defaultProps = {
+  addTask: () => {},
+}
+NewTaskForm.propTypes = {
+  addTask: PropTypes.func,
 }

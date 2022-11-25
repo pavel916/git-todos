@@ -116,6 +116,7 @@ body {
 }
 
 .inputSubmit {
+  margin-left: auto;
   background-color: #af5b5e;
   color: #fff;
 }

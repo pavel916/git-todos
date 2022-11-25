@@ -10,6 +10,7 @@ const TaskList = ({ todoData, filterMap, filterName, deleteTask, onTaskClick }) 
     ))}
   </ul>
 )
+
 TaskList.defaultProps = {
   filterMap: () => {},
 }

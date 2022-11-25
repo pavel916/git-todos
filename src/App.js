@@ -14,36 +14,32 @@ export default class App extends Component {
         name: 'Completed task',
         done: true,
         status: 'completed',
-        min: 10,
-        sec: 10,
+       
       },
       {
         id: 2,
         name: 'Editing task',
         done: true,
         status: 'editing',
-        min: 11,
-        sec: 0,
+      
       },
       {
         id: 3,
         name: 'Active task',
         done: true,
         status: '',
-        min: 5,
-        sec: 0,
+       
       },
     ],
     filterTasks: 'All',
   }
 
-  createTask = (text, min, sec) => ({
+  createTask = (text) => ({
     id: Date.now(),
     name: text,
     done: true,
     status: '',
-    min,
-    sec,
+
   })
 
   onTaskClick = (id) => {
@@ -60,19 +56,17 @@ export default class App extends Component {
     }))
   }
 
+
+
   deleteTask = (id) => {
     this.setState(({ todoData }) => ({
       todoData: todoData.filter((i) => i.id !== id),
     }))
   }
 
-  addTask = (text, min, sec) => {
+  addTask = (text) => {
     this.setState(({ todoData }) => {
-      text = text.trim()
-      if (text === '') return
-      if (min === '') min = 10
-      if (sec === '') sec = 0
-      const item = this.createTask(text, min, sec)
+      const item = this.createTask(text)
       return {
         todoData: [...todoData, item],
       }
