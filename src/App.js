@@ -13,21 +13,18 @@ export default class App extends Component {
         id: 1,
         name: 'Completed task',
         done: true,
-        status: 'completed',
        
       },
       {
         id: 2,
         name: 'Editing task',
         done: true,
-        status: 'editing',
       
       },
       {
         id: 3,
         name: 'Active task',
         done: true,
-        status: '',
        
       },
     ],

@@ -21,7 +21,6 @@ TaskList.propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       done: PropTypes.bool.isRequired,
-      status: PropTypes.string.isRequired,
     }),
   ).isRequired,
   filterMap: PropTypes.objectOf(PropTypes.func),

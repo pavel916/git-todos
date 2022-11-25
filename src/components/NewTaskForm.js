@@ -4,20 +4,13 @@ import PropTypes from 'prop-types'
 export default class NewTaskForm extends Component {
   state = {
     label: ''
-    
   }
-
- 
-
-  
 
   onLabelChangeTitle = (e) => {
     this.setState({
       label: e.target.value,
     })
   }
-
-  
 
   onLabelSubmit = (e) => {
     e.preventDefault()
@@ -34,7 +27,7 @@ export default class NewTaskForm extends Component {
           placeholder='What needs to be done?'
           value={this.state.label}
         />
-       
+
         <input className='inputSubmit' type='submit' value='ok' onSubmit={this.onLabelSubmit} />
       </form>
     )
