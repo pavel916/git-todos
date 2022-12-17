@@ -32,7 +32,7 @@ export default class App extends Component {
   }
 
   createTask = (text) => ({
-    id: Date.now(),
+    id: Math.random(1, 500),
     name: text,
     done: true,
     status: '',
@@ -53,7 +53,19 @@ export default class App extends Component {
     }))
   }
 
+  editLabel = (name, id) => {
+    this.setState(({ todoData }) => {
+      const itemIdx = todoData.findIndex((element) => element.id === id)
 
+      return {
+        todoData: [
+          ...todoData.slice(0, itemIdx),
+          { ...todoData[itemIdx], name: name },
+          ...todoData.slice(itemIdx + 1),
+        ],
+      }
+    })
+  }
 
   deleteTask = (id) => {
     this.setState(({ todoData }) => ({
@@ -64,6 +76,7 @@ export default class App extends Component {
   addTask = (text) => {
     this.setState(({ todoData }) => {
       const item = this.createTask(text)
+      if (text === '') return
       return {
         todoData: [...todoData, item],
       }
@@ -89,7 +102,7 @@ export default class App extends Component {
 
     const filterNames = Object.keys(filterMap)
 
-    const countItems = this.state.todoData.filter((i) => i.done === false).length
+    const countItems = this.state.todoData.filter((i) => i.done === true).length
     return (
       <section className='todoapp'>
         <header className='header'>
@@ -104,6 +117,10 @@ export default class App extends Component {
             todoData={this.state.todoData}
             filterMap={filterMap}
             filterName={this.state.filterTasks}
+            switchEditing={this.switchEditing}
+            setEditing={this.setEditing}
+            onchangeInputValue={this.onchangeInputValue}
+            editLabel={this.editLabel}
           />
           <Footer
             setFilter={this.setFilter}

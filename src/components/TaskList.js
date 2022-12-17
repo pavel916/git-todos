@@ -3,10 +3,17 @@ import PropTypes from 'prop-types'
 
 import Task from './Task'
 
-const TaskList = ({ todoData, filterMap, filterName, deleteTask, onTaskClick }) => (
+const TaskList = ({ todoData, filterMap, filterName, deleteTask, onTaskClick, setEditing, onchangeInputValue, editLabel}) => (
   <ul className='todo-list'>
     {todoData.filter(filterMap[filterName]).map((task) => (
-      <Task {...task} key={task.id} deleteTask={deleteTask} onTaskClick={onTaskClick} />
+      <Task 
+        {...task} 
+        key={task.id}
+        deleteTask={deleteTask} 
+        onTaskClick={onTaskClick} 
+        setEditing={setEditing} 
+        onchangeInputValue={onchangeInputValue} 
+        editLabel={editLabel}/>
     ))}
   </ul>
 )

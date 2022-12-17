@@ -300,7 +300,7 @@ body {
   content: '✎';
 }
 
-.todo-list li .icon-pause,
+/* .todo-list li .icon-pause,
 .todo-list li .icon-play {
   font-size: 18px;
   width: 18px;
@@ -321,7 +321,7 @@ body {
 
 .icon-play:after {
   content: '▶';
-}
+} */
 
 .todo-list li .edit {
   display: none;
@@ -431,6 +431,11 @@ html .clear-completed:active {
 
 .info a:hover {
   text-decoration: underline;
+}
+
+.edition {
+    width: 542px;
+    height: 30px;
 }
 
 /*
