@@ -258,7 +258,7 @@ body {
   color: #4d4d4d;
 }
 
-.todo-list li.completed label .title {
+.todo-list div.completed label .title {
   color: #cdcdcd;
   text-decoration: line-through;
 }
@@ -300,7 +300,7 @@ body {
   content: '✎';
 }
 
-/* .todo-list li .icon-pause,
+.todo-list li .icon-pause,
 .todo-list li .icon-play {
   font-size: 18px;
   width: 18px;
@@ -321,7 +321,7 @@ body {
 
 .icon-play:after {
   content: '▶';
-} */
+}
 
 .todo-list li .edit {
   display: none;

@@ -3,20 +3,32 @@ import PropTypes from 'prop-types'
 
 import Task from './Task'
 
-const TaskList = ({ todoData, filterMap, filterName, deleteTask, onTaskClick, setEditing, onchangeInputValue, editLabel}) => (
-  <ul className='todo-list'>
-    {todoData.filter(filterMap[filterName]).map((task) => (
-      <Task 
-        {...task} 
-        key={task.id}
-        deleteTask={deleteTask} 
-        onTaskClick={onTaskClick} 
-        setEditing={setEditing} 
-        onchangeInputValue={onchangeInputValue} 
-        editLabel={editLabel}/>
-    ))}
-  </ul>
-)
+class TaskList extends React.Component {
+  state = {}
+
+  render() {
+
+    const { todoData, filterMap, deleteTask, onTaskClick, filterName, setEditing, editLabel } = this.props
+    
+
+    return (
+      <ul className='todo-list'>
+        <li>
+          {todoData.filter(filterMap[filterName]).map((task) => (
+            <Task
+              {...task}
+              key={task.id}
+              deleteTask={deleteTask}
+              onTaskClick={onTaskClick}
+              setEditing={setEditing}
+              editLabel={editLabel}
+            />
+          ))}
+        </li>
+      </ul>
+    )
+  }
+}
 
 TaskList.defaultProps = {
   filterMap: () => {},
@@ -37,3 +49,4 @@ TaskList.propTypes = {
 }
 
 export default TaskList
+

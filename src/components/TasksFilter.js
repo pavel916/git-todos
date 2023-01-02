@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const TasksFilter = ({ filterList, setFilter, isPressed }) => (
+const TasksFilter = ({ filterList, setFilter }) => (
   <ul className='filters'>
     {filterList.map((i) => (
       <li key={i}>
-        <button onClick={() => setFilter(i)} className={isPressed === i ? 'selected' : ''}>
+        <button onClick={() => setFilter(i)} >
           {i}
         </button>
       </li>

@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+
 import './App.css'
 
 import NewTaskForm from './components/NewTaskForm'
 import Footer from './components/Footer'
 import TaskList from './components/TaskList'
+
 
 export default class App extends Component {
   state = {
@@ -13,29 +15,38 @@ export default class App extends Component {
         id: 1,
         name: 'Completed task',
         done: true,
+        min: 0,
+        sec: 0
        
       },
       {
         id: 2,
         name: 'Editing task',
         done: true,
+        min: 0,
+        sec: 0
       
       },
       {
         id: 3,
         name: 'Active task',
         done: true,
+        min: 0,
+        sec: 0
        
       },
     ],
     filterTasks: 'All',
   }
 
-  createTask = (text) => ({
+
+  createTask = (name, min, sec) => ({
     id: Math.random(1, 500),
-    name: text,
+    name,
     done: true,
-    status: '',
+    min,
+    sec
+    
 
   })
 
@@ -73,10 +84,12 @@ export default class App extends Component {
     }))
   }
 
-  addTask = (text) => {
+  addTask = (name, min, sec) => {
     this.setState(({ todoData }) => {
-      const item = this.createTask(text)
-      if (text === '') return
+      const item = this.createTask(name, min, sec)
+      if (name === '') return
+      if (min === '') min = 0
+      if (sec === '') sec = 0
       return {
         todoData: [...todoData, item],
       }
@@ -92,6 +105,7 @@ export default class App extends Component {
   setFilter = (name) => {
     this.setState(() => ({ filterTasks: name }))
   }
+
 
   render() {
     const filterMap = {
@@ -111,7 +125,6 @@ export default class App extends Component {
         </header>
         <section className='main'>
           <TaskList
-            addTask={this.addTask}
             deleteTask={this.deleteTask}
             onTaskClick={this.onTaskClick}
             todoData={this.state.todoData}
@@ -119,7 +132,6 @@ export default class App extends Component {
             filterName={this.state.filterTasks}
             switchEditing={this.switchEditing}
             setEditing={this.setEditing}
-            onchangeInputValue={this.onchangeInputValue}
             editLabel={this.editLabel}
           />
           <Footer
